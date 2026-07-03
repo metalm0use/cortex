@@ -1,0 +1,29 @@
+#!/usr/bin/env sh
+set -eu
+
+find_python() {
+  if [ -n "${PYTHON:-}" ] && command -v "$PYTHON" >/dev/null 2>&1; then
+    printf '%s\n' "$PYTHON"
+    return 0
+  fi
+  for candidate in python3 python py; do
+    if command -v "$candidate" >/dev/null 2>&1; then
+      printf '%s\n' "$candidate"
+      return 0
+    fi
+  done
+  if [ -x "/c/Users/user/AppData/Local/Python/bin/python.exe" ]; then
+    printf '%s\n' "/c/Users/user/AppData/Local/Python/bin/python.exe"
+    return 0
+  fi
+  return 1
+}
+
+PY="$(find_python)" || {
+  echo "ERROR: Python was not found for Cortex pre-commit checks." >&2
+  exit 1
+}
+
+"$PY" skills/meta/scripts/validate.py --fix-generated
+
+git add skills/meta/source-manifest/SKILL.md skills/meta/index/SKILL.md

@@ -1,0 +1,14 @@
+.DS_Store
+.obsidian/graph.json
+.obsidian/workspace*.json
+.obsidian/plugins/
+.obsidian/community-plugins.json
+.obsidian/cache/
+.obsidian/logs/
+.venv/
+.cortex/
+.cursor/rules/cortex-*.mdc
+__pycache__/
+*.pyc
+# Smart Environment
+.smart-env

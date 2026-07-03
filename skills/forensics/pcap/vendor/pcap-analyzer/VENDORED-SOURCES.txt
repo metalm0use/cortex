@@ -1,0 +1,31 @@
+Vendored source package: pcap-analyzer
+
+Upstream repository: https://github.com/sandbornm/my-claude-skills
+Upstream path: pcap-analyzer/
+Vendored commit: ee55c354b064a356bf6d9b2965b48f683daef0b0
+Vendored on: 2026-06-07
+Upstream author metadata: sandbornm
+Upstream package version: 1.0.0
+
+No LICENSE file was present in the upstream repository at the vendored
+commit. Treat these files as third-party source. Do not rewrite them to
+match Cortex style unless Cortex intentionally forks the package and adds
+clear local maintenance ownership.
+
+Included files:
+
+- scripts/pcap-analyze.sh
+- scripts/analysis_scripts/*.py
+
+The upstream Claude plugin manifest and upstream SKILL.md are not
+vendored. Cortex keeps `skills/forensics/pcap/SKILL.md` as the only
+active skill instruction file and carries only the reusable analyzer
+scripts from the upstream package.
+
+Runtime notes:
+
+- The wrapper expects a POSIX shell, Python 3.8+, and the Python package
+  scapy.
+- tshark is optional but recommended by the upstream package.
+- The scripts analyze local pcap/pcapng files and write outputs under an
+  explicit output directory.

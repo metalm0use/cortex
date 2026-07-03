@@ -1,0 +1,6 @@
+{
+  "agents": "codex,claude",
+  "categories": "all",
+  "mode": "wrapper",
+  "scope": "global"
+}

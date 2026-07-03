@@ -1,0 +1,12 @@
+* text=auto
+
+.gitattributes text eol=lf
+*.md text eol=lf
+*.py text eol=lf
+*.sh text eol=lf
+*.ps1 text eol=lf
+.githooks/* text eol=lf
+
+# Preserve vendored upstream template payloads without making Cortex
+# whitespace policy rewrite third-party source.
+skills/presentation/frontend-slides/vendor/** whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab

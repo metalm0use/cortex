@@ -1,0 +1,36 @@
+Vendored for Cortex offline enterprise deployments.
+
+Reason:
+Some target Codex and Claude environments cannot access the internet at
+runtime. The Frontend Slides skill therefore carries its upstream skill
+files and the full Beautiful HTML Templates library as source assets.
+
+Sources:
+- frontend-slides: https://github.com/zarazhangrui/frontend-slides
+- beautiful-html-templates: https://github.com/zarazhangrui/beautiful-html-templates
+
+Licenses:
+Both upstream repositories include MIT LICENSE files. Preserve those
+files and attribution when refreshing this vendor payload.
+
+Refresh rule:
+Update vendored files in Cortex source, validate, commit, then redeploy
+native packages. Do not make generated Codex or Claude packages the
+source of truth.
+
+Packaging note:
+Keep frontend-slides/bold-template-pack/ and frontend-slides/scripts/
+because the upstream Frontend Slides skill references those top-level
+paths directly. The upstream repository also packaged duplicate copies
+under frontend-slides/plugins/frontend-slides/skills/frontend-slides/.
+Those nested plugin packaging files are pruned when they are byte-for-byte
+duplicates of the preserved top-level assets.
+
+Font note:
+Template font binaries are not present in the upstream template repos.
+Cortex carries template-referenced Google Fonts separately under
+../assets/fonts/ so offline decks can preserve the template visual
+identity without fetching fonts from Google at runtime. Referenced fonts
+that are not available through the Google Fonts CSS API are documented
+in ../assets/fonts/FONT-SOURCES.md and must not be added from another
+CDN until license and provenance are verified.
